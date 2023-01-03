@@ -9,8 +9,10 @@ export const Clock = () => {
   const currentYear = currentDatetime.getFullYear();
   const currentMonth = currentDatetime.getMonth() + 1;
   const currentDate = currentDatetime.getDate();
-  const currentHours = currentDatetime.getHours();
-  const currentMinutes = currentDatetime.getMinutes();
+
+  // 時刻は1桁の場合、ゼロ埋めして必ず2桁で表示する
+  const currentHours = ("00" + currentDatetime.getHours()).slice(-2);
+  const currentMinutes = ("00" + currentDatetime.getMinutes()).slice(-2);
 
   const todaysDate = `${currentYear}年${currentMonth}月${currentDate}日`;
   const currentTime = `${currentHours}:${currentMinutes}`;

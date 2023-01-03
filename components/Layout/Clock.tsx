@@ -1,21 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Inter } from "@next/font/google";
 import styles from "../../styles/Home.module.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const Clock = () => {
-  const currentDatetime = new Date();
+  const [currentDatetime, setCurrentDatetime] = useState(new Date());
   const currentYear = currentDatetime.getFullYear();
   const currentMonth = currentDatetime.getMonth() + 1;
   const currentDate = currentDatetime.getDate();
+  const currentDayOfWeek = ["日", "月", "火", "水", "木", "金", "土"][
+    currentDatetime.getDay()
+  ];
 
   // 時刻は1桁の場合、ゼロ埋めして必ず2桁で表示する
   const currentHours = ("00" + currentDatetime.getHours()).slice(-2);
   const currentMinutes = ("00" + currentDatetime.getMinutes()).slice(-2);
 
-  const todaysDate = `${currentYear}年${currentMonth}月${currentDate}日`;
+  const todaysDate = `${currentYear}年${currentMonth}月${currentDate}日 (${currentDayOfWeek})`;
   const currentTime = `${currentHours}:${currentMinutes}`;
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentDatetime(new Date());
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <>

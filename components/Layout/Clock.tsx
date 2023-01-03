@@ -1,46 +1,40 @@
 import React from "react";
-import Image from "next/image";
 import { Inter } from "@next/font/google";
 import styles from "../../styles/Home.module.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const Clock = () => {
+  const currentDatetime = new Date();
+  const currentYear = currentDatetime.getFullYear();
+  const currentMonth = currentDatetime.getMonth() + 1;
+  const currentDate = currentDatetime.getDate();
+  const currentHours = currentDatetime.getHours();
+  const currentMinutes = currentDatetime.getMinutes();
+
+  const todaysDate = `${currentYear}年${currentMonth}月${currentDate}日`;
+  const currentTime = `${currentHours}:${currentMinutes}`;
+
   return (
     <>
       <main className={styles.main}>
         <div className={styles.description}>
           <div>
-            <p>2023/01/03</p>
+            <p>{todaysDate}</p>
           </div>
         </div>
 
         <div className={styles.center}>
-          <Image
-            className={styles.logo}
-            src="/next.svg"
-            alt="Next.js Logo"
-            width={180}
-            height={37}
-            priority
-          />
+          <p className={styles.time}>{currentTime}</p>
         </div>
 
         <div className={styles.grid}>
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <div className={styles.card}>
             <h2 className={inter.className}>
-              Deploy <span>-&gt;</span>
+              current time <span>-&gt;</span>
             </h2>
-            <p className={inter.className}>
-              Instantly deploy your Next.js site to a shareable URL
-              with&nbsp;Vercel.
-            </p>
-          </a>
+            <p className={inter.className}>現在時刻の表示</p>
+          </div>
         </div>
       </main>
       ;

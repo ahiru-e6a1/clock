@@ -1,5 +1,5 @@
 現在時刻を表示するアプリです。説明用に作成しています。
-アプリは [こちら](https://nextjs.org/)から
+アプリは [こちら](https://clock-bay-zeta.vercel.app/)から
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
